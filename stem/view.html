@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel with Cards</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .carousel-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            overflow: hidden;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .card {
+            min-width: 200px;
+            margin: 0 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card h3 {
+            margin: 10px 0;
+        }
+        .card p {
+            padding: 0 10px 10px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            background: #333;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="card">
+                <img src="image1.jpg" alt="Image 1">
+                <h3>Card 1</h3>
+                <p>Description for card 1</p>
+            </div>
+            <div class="card">
+                <img src="image2.jpg" alt="Image 2">
+                <h3>Card 2</h3>
+                <p>Description for card 2</p>
+            </div>
+            <div class="card">
+                <img src="image3.jpg" alt="Image 3">
+                <h3>Card 3</h3>
+                <p>Description for card 3</p>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+        <button onclick="prev()">Previous</button>
+        <button onclick="next()">Next</button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const carousel = document.getElementById('carousel');
+            const cardWidth = document.querySelector('.card').offsetWidth;
+            carousel.style.transform = `translateX(${-currentIndex * (cardWidth + 20)}px)`;
+        }
+
+        function prev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+
+        function next() {
+            const carousel = document.getElementById('carousel');
+            const totalCards = carousel.children.length;
+            if (currentIndex < totalCards - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+    </script>
+</body>
+</html>

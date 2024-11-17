@@ -1,1 +1,27 @@
-<!-- ! MAIN HTML FILE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css">
+    <title>Fashion Website</title>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Photos</h1>
+        <form id="image-form">
+            <div class="form-group">
+                <label for="userPhoto">User Photo:</label>
+                <input type="file" id="userPhoto" name="userPhoto" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="clothPhoto">Cloth Photo:</label>
+                <input type="file" id="clothPhoto" name="clothPhoto" accept="image/*" required>
+            </div>
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
+    </div>
+    <script src="../script/index.js"></script>
+</body>
+</html>
